@@ -104,7 +104,13 @@ public class DoctorPageController implements Initializable {
 
   @FXML
   void switchForm(ActionEvent event) {
-
+    if (event.getSource() == linkLoginHere) {
+      formRegister.setVisible(false);
+      formLogin.setVisible(true);
+    } else if (event.getSource() == linkRegisterHere) {
+      formLogin.setVisible(false);
+      formRegister.setVisible(true);
+    }
   }
 
   @Override

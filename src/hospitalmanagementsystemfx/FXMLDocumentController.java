@@ -8,13 +8,17 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -82,6 +86,9 @@ public class FXMLDocumentController implements Initializable {
 
   @FXML
   private TextField textRegisterUsername;
+
+  @FXML
+  private ComboBox<?> listUser;
 
   // database tools
   private Connection connect;
@@ -219,6 +226,51 @@ public class FXMLDocumentController implements Initializable {
     }
   }
 
+  public void userList() {
+    List<String> users = new ArrayList<>();
+
+    for (String user : Users.user) {
+      users.add(user);
+    }
+
+    ObservableList listData = FXCollections.observableList(users);
+    listUser.setItems(listData);
+  }
+
+  public void switchPortal() {
+    if (listUser.getSelectionModel().getSelectedItem() == "Admin Portal") {
+      try {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Stage stage = new Stage();
+
+        stage.setTitle("Hospital Management System");
+        stage.setMinWidth(330);
+        stage.setMinHeight(550);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+
+      } catch(Exception e) {e.printStackTrace();}
+    } else if (listUser.getSelectionModel().getSelectedItem() == "Doctor Portal") {
+      try {
+        Parent root = FXMLLoader.load(getClass().getResource("DoctorPage.fxml"));
+        Stage stage = new Stage();
+
+        stage.setTitle("Hospital Management System");
+        stage.setMinWidth(330);
+        stage.setMinHeight(550);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+
+      } catch(Exception e) {e.printStackTrace();}
+    } else if (listUser.getSelectionModel().getSelectedItem() == "Patient Portal") {
+
+    }
+
+    listUser.getScene().getWindow().hide();
+  }
+
   public void switchForm(ActionEvent event) {
     if (event.getSource() == linkRegisterHere) {
       formLogin.setVisible(false);
@@ -231,7 +283,7 @@ public class FXMLDocumentController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    // TODO
+    userList();
   }
 
 }
