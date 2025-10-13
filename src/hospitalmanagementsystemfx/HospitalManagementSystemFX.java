@@ -23,7 +23,11 @@ public class HospitalManagementSystemFX extends Application {
         Scene scene = new Scene(root);
         Image icon = new Image("hospital.png");
         stage.getIcons().add(icon);
-        
+
+        stage.setTitle("JavaFX HMS");
+        stage.setMinWidth(330);
+        stage.setMinHeight(550);
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
