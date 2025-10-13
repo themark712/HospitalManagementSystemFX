@@ -1,0 +1,49 @@
+.root {
+  -primary-blue: #1C7AB2;
+  -dark-blue: #025688;
+  -light-blue: #e0effd;
+  -light-purple: #7a80cf;
+}
+
+* {
+  -fx-font-family: "Segoe UI";
+}
+
+.dark-blue-text {
+  -fx-text-fill: -dark-blue;
+}
+
+.light-blue-bg {
+  -fx-background-color:-light-blue;
+}
+
+.black-text {
+  -fx-text-fill: #000;
+}
+
+.radius {
+  -fx-background-radius: 6px
+}
+
+.textfield-1 {
+  -fx-border-color: #ddd;
+  -fx-border-width: 0.3px;
+  -fx-font-family: "Segoe UI"
+}
+
+.textfield-1:focused {
+  -fx-border-color: -primary-blue;
+  -fx-border-width: 1.4px;
+}
+
+.btn-1 {
+  -fx-background-color: -primary-blue;
+  -fx-cursor: hand;
+  -fx-text-fill: #fff;
+  -fx-font-size: 14px;
+  -fx-font-family: "Segoe UI"
+}
+
+.btn-1:hover {
+  -fx-background-color: -light-purple;
+}
