@@ -14,38 +14,43 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxWidth="550.0" prefHeight="330.0" stylesheets="@../design/page-design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementsystemfx.FXMLDocumentController">
+<StackPane maxWidth="550.0" prefHeight="330.0" stylesheets="@../design/page-design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementsystemfx.DoctorPageController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="formMain" prefHeight="550.0" prefWidth="330.0" styleClass="light-blue-bg" stylesheets="@../design/page-design.css">
-          <children>
-            <AnchorPane fx:id="formRegister" prefHeight="550.0" prefWidth="330.0" visible="false">
+         <children>
+            <AnchorPane fx:id="formRegister" prefHeight="550.0" prefWidth="330.0">
                <children>
                   <ImageView fitHeight="78.0" fitWidth="81.0" layoutX="130.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/user-add.png" />
+                        <Image url="@../images/doctor.png" />
                      </image>
                   </ImageView>
-                    <Label fx:id="labelRegister" alignment="CENTER" layoutY="105.0" minHeight="16" minWidth="69" prefHeight="29.0" prefWidth="330.0" styleClass="dark-blue-text" text="Register Account" textAlignment="CENTER">
+                  <Label fx:id="labelRegister" alignment="CENTER" layoutY="105.0" minHeight="16" minWidth="69" prefHeight="29.0" prefWidth="330.0" styleClass="dark-blue-text" text="Register Account" textAlignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label" alignment="CENTER" layoutY="136.0" prefHeight="21.0" prefWidth="331.0" text="Admin Portal" textAlignment="CENTER">
+                  <Label fx:id="label" alignment="CENTER" layoutY="136.0" prefHeight="21.0" prefWidth="331.0" text="Doctor Portal" textAlignment="CENTER">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textRegisterEmail" layoutX="37.0" layoutY="204.0" prefHeight="30.0" prefWidth="259.0" promptText="Email Address" styleClass="textfield-1">
+                  <TextField fx:id="textRegisterFullName" layoutX="36.0" layoutY="176.0" prefHeight="30.0" prefWidth="259.0" promptText="Full Name" styleClass="textfield-1">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="textRegisterUsername" layoutX="37.0" layoutY="239.0" prefHeight="30.0" prefWidth="259.0" promptText="Username" styleClass="textfield-1">
+                  <TextField fx:id="textRegisterEmail" layoutX="37.0" layoutY="212.0" prefHeight="30.0" prefWidth="259.0" promptText="Email Address" styleClass="textfield-1">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="textRegisterPassword" layoutX="37.0" layoutY="275.0" prefHeight="30.0" prefWidth="259.0" promptText="Password">
+                  <TextField fx:id="textRegisterUsername" layoutX="37.0" layoutY="247.0" prefHeight="30.0" prefWidth="259.0" promptText="Doctor ID" styleClass="textfield-1">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="textRegisterPassword" layoutX="37.0" layoutY="283.0" prefHeight="30.0" prefWidth="259.0" promptText="Password">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -55,12 +60,12 @@
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </TextField>
-                  <CheckBox fx:id="checkRegisterShowPassword" layoutX="40.0" layoutY="315.0" mnemonicParsing="false" onAction="#registerShowPassword" prefHeight="16.0" prefWidth="150.0" text="Show Password">
+                  <CheckBox fx:id="checkRegisterShowPassword" layoutX="40.0" layoutY="323.0" mnemonicParsing="false" onAction="#registerShowPassword" prefHeight="16.0" prefWidth="150.0" text="Show Password">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </CheckBox>
-                    <Button fx:id="buttonRegister" layoutX="39.0" layoutY="346.0" onAction="#registerAccount" prefHeight="36.0" prefWidth="259.0" text="Register">
+                  <Button fx:id="buttonRegister" layoutX="39.0" layoutY="354.0" onAction="#registerAccount" prefHeight="36.0" prefWidth="259.0" text="Register">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>
@@ -86,11 +91,11 @@
                   </Hyperlink>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="formLogin" prefHeight="550.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="formLogin" prefHeight="550.0" prefWidth="330.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fitHeight="78.0" fitWidth="81.0" layoutX="130.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="78.0" fitWidth="81.0" layoutX="135.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/user.png" />
+                        <Image url="@../images/doctor.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelLogin" alignment="CENTER" layoutX="1.0" layoutY="105.0" minHeight="16" minWidth="69" prefHeight="29.0" prefWidth="330.0" styleClass="dark-blue-text" text="Login">
@@ -98,12 +103,12 @@
                         <Font name="Segoe UI Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="label1" alignment="CENTER" layoutX="1.0" layoutY="136.0" prefHeight="21.0" prefWidth="330.0" text="Admin Portal">
+                  <Label fx:id="label1" alignment="CENTER" layoutX="1.0" layoutY="136.0" prefHeight="21.0" prefWidth="330.0" text="Doctor Portal">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textLoginUsername" layoutX="38.0" layoutY="183.0" prefHeight="30.0" prefWidth="259.0" promptText="Username" styleClass="textfield-1">
+                  <TextField fx:id="textLoginDoctorId" layoutX="38.0" layoutY="183.0" prefHeight="30.0" prefWidth="259.0" promptText="Doctor ID" styleClass="textfield-1">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
@@ -150,7 +155,7 @@
                   </Hyperlink>
                </children>
             </AnchorPane>
-          </children>
+         </children>
       </AnchorPane>
    </children>
 </StackPane>

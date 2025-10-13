@@ -24,7 +24,7 @@ public class HospitalManagementSystemFX extends Application {
         Image icon = new Image("hospital.png");
         stage.getIcons().add(icon);
 
-        stage.setTitle("JavaFX HMS");
+        stage.setTitle("Hospital Management System");
         stage.setMinWidth(330);
         stage.setMinHeight(550);
         stage.setResizable(false);
@@ -32,9 +32,8 @@ public class HospitalManagementSystemFX extends Application {
         stage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    // create database
+
     public static void main(String[] args) {
         launch(args);
     }

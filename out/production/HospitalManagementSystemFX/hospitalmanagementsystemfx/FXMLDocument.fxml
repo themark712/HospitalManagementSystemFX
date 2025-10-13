@@ -18,7 +18,7 @@
    <children>
       <AnchorPane id="AnchorPane" fx:id="formMain" prefHeight="550.0" prefWidth="330.0" styleClass="light-blue-bg" stylesheets="@../design/page-design.css">
           <children>
-            <AnchorPane fx:id="formRegister" prefHeight="550.0" prefWidth="330.0">
+            <AnchorPane fx:id="formRegister" prefHeight="550.0" prefWidth="330.0" visible="false">
                <children>
                   <ImageView fitHeight="78.0" fitWidth="81.0" layoutX="130.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,32 +35,32 @@
                         <Font name="Segoe UI" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textRegisterUsername" layoutX="37.0" layoutY="239.0" prefHeight="30.0" prefWidth="259.0" promptText="Username" styleClass="textfield-1">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </TextField>
                   <TextField fx:id="textRegisterEmail" layoutX="37.0" layoutY="204.0" prefHeight="30.0" prefWidth="259.0" promptText="Email Address" styleClass="textfield-1">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="textRegisterPasswod" layoutX="37.0" layoutY="275.0" prefHeight="30.0" prefWidth="259.0" promptText="Password">
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                  </PasswordField>
-                  <TextField fx:id="textRegisterShowPassword" editable="false" layoutX="37.0" layoutY="275.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="259.0" promptText="Password" styleClass="textfield-1" visible="false">
+                  <TextField fx:id="textRegisterUsername" layoutX="37.0" layoutY="239.0" prefHeight="30.0" prefWidth="259.0" promptText="Username" styleClass="textfield-1">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </TextField>
-                  <CheckBox fx:id="checkRegisterShowPassword" layoutX="40.0" layoutY="315.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="150.0" text="Show Password">
+                  <PasswordField fx:id="textRegisterPassword" layoutX="37.0" layoutY="275.0" prefHeight="30.0" prefWidth="259.0" promptText="Password">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </PasswordField>
+                  <TextField fx:id="textRegisterShowPassword" layoutX="37.0" layoutY="275.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="259.0" promptText="Password" styleClass="textfield-1" visible="false">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </TextField>
+                  <CheckBox fx:id="checkRegisterShowPassword" layoutX="40.0" layoutY="315.0" mnemonicParsing="false" onAction="#registerShowPassword" prefHeight="16.0" prefWidth="150.0" text="Show Password">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </CheckBox>
-                    <Button fx:id="buttonRegister" layoutX="39.0" layoutY="346.0" prefHeight="36.0" prefWidth="259.0" text="Register">
+                    <Button fx:id="buttonRegister" layoutX="39.0" layoutY="346.0" onAction="#registerAccount" prefHeight="36.0" prefWidth="259.0" text="Register">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>
@@ -86,7 +86,7 @@
                   </Hyperlink>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="formLogin" prefHeight="550.0" prefWidth="330.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="formLogin" prefHeight="550.0" prefWidth="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="78.0" fitWidth="81.0" layoutX="130.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -118,12 +118,12 @@
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </TextField>
-                  <CheckBox fx:id="checkLoginShowPassword" layoutX="38.0" layoutY="259.0" mnemonicParsing="false" text="Show Password">
+                  <CheckBox fx:id="checkLoginShowPassword" layoutX="38.0" layoutY="259.0" mnemonicParsing="false" onAction="#loginShowPassword" text="Show Password">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </CheckBox>
-                  <Button fx:id="buttonLogin" layoutX="38.0" layoutY="283.0" prefHeight="36.0" prefWidth="259.0" text="Login">
+                  <Button fx:id="buttonLogin" layoutX="38.0" layoutY="283.0" onAction="#loginAccount" prefHeight="36.0" prefWidth="259.0" text="Login">
                      <font>
                         <Font name="Segoe UI" size="14.0" />
                      </font>
