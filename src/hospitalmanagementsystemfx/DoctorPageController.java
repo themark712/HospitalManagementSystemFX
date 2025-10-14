@@ -113,13 +113,13 @@ public class DoctorPageController implements Initializable {
         //result  = prepare.executeQuery();
 
         // if user switches between show password field, update the text fields so the passwords match
-        if (!textRegisterShowPassword.isVisible()) {
-          if (!textRegisterShowPassword.getText().equals(textRegisterPassword.getText())) {
-            textRegisterShowPassword.setText(textRegisterPassword.getText());
+        if (!textLoginShowPassword.isVisible()) {
+          if (!textLoginShowPassword.getText().equals(textLoginPassword.getText())) {
+            textLoginShowPassword.setText(textLoginPassword.getText());
           }
         } else {
-          if (!textRegisterShowPassword.getText().equals(textRegisterPassword.getText())) {
-            textRegisterPassword.setText(textRegisterShowPassword.getText());
+          if (!textLoginShowPassword.getText().equals(textLoginPassword.getText())) {
+            textLoginPassword.setText(textLoginShowPassword.getText());
           }
         }
 
@@ -167,21 +167,22 @@ public class DoctorPageController implements Initializable {
 
   @FXML
   void registerAccount() {
+
     if (textRegisterFullName.getText().isEmpty()
             || textRegisterEmail.getText().isEmpty()
             || textRegisterDoctorId.getText().isEmpty()
             || textRegisterPassword.getText().isEmpty()) {
-      alert.errorMessage("Please fill in all fields");
+      alert.errorMessage("Please fill all blank fields");
     } else {
-      // check if doctor exists
-      String checkDoctorId = "SELECT * FROM Doctor WHERE DoctorId='" + textRegisterDoctorId.getText() + "' ";
-      checkDoctorId += " OR Email='" + textRegisterEmail.getText() + "'";
+
+      String checkDoctorID = "SELECT * FROM doctor WHERE doctor_id = '"
+              + textRegisterDoctorId.getText() + "'";
 
       connect = Database.connectDB();
 
       try {
-        // if user switches between show password field, update the text fields so the passwords match
-        if (!textRegisterShowPassword.isVisible()) {
+
+        if (!checkRegisterShowPassword.isVisible()) {
           if (!textRegisterShowPassword.getText().equals(textRegisterPassword.getText())) {
             textRegisterShowPassword.setText(textRegisterPassword.getText());
           }
@@ -191,57 +192,57 @@ public class DoctorPageController implements Initializable {
           }
         }
 
-        prepare = connect.prepareStatement(checkDoctorId);
+        prepare = connect.prepareStatement(checkDoctorID);
         result = prepare.executeQuery();
 
         if (result.next()) {
-          alert.errorMessage("Doctor username/email already exists");
-          //} else if (textRegisterDoctorId.getText().length() < 8) {
-          //  alert.errorMessage("Doctor ID be at least 8 characters");
+          alert.errorMessage(textRegisterDoctorId.getText() + " is already taken");
         } else if (textRegisterPassword.getText().length() < 8) {
-          alert.errorMessage("Password must be at least 8 characters");
+          alert.errorMessage("Invalid password, at least 8 characters needed");
         } else {
-          // add new doctor to database
-          String insertData = "INSERT INTO Doctor (FullName, DoctorId, Email, Password, Date, Status) VALUES (?, ?, ?, ?, ?, ?)";
+
+          String insertData = "INSERT INTO doctor (full_name, email, doctor_id, password, date, status) "
+                  + "VALUES(?,?,?,?,?,?)";
+
           prepare = connect.prepareStatement(insertData);
 
           Date date = new Date();
-          java.sql.Date sqlDate = new java.sql.Date(date.getDate());
+          java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
           prepare.setString(1, textRegisterFullName.getText());
-          prepare.setString(2, textRegisterDoctorId.getText());
-          prepare.setString(3, textRegisterEmail.getText());
+          prepare.setString(2, textRegisterEmail.getText());
+          prepare.setString(3, textRegisterDoctorId.getText());
           prepare.setString(4, textRegisterPassword.getText());
           prepare.setString(5, String.valueOf(sqlDate));
           prepare.setString(6, "Confirm");
 
           prepare.executeUpdate();
-          alert.successMessage("Doctor successfully registered!");
+
+          alert.successMessage("Registration successful!");
+
         }
+
       } catch (Exception e) {
         e.printStackTrace();
       }
+
     }
+
   }
 
+  @FXML
+  void registerShowPassword() {
 
-  public void registerClear() {
-    textRegisterEmail.clear();
-    textRegisterDoctorId.clear();
-    textRegisterPassword.clear();
-    textRegisterShowPassword.clear();
-  }
-
-  public void registerShowPassword() {
     if (checkRegisterShowPassword.isSelected()) {
       textRegisterShowPassword.setText(textRegisterPassword.getText());
-      textRegisterPassword.setVisible(false);
       textRegisterShowPassword.setVisible(true);
+      textRegisterPassword.setVisible(false);
     } else {
       textRegisterPassword.setText(textRegisterShowPassword.getText());
       textRegisterShowPassword.setVisible(false);
       textRegisterPassword.setVisible(true);
     }
+
   }
 
   public void userList() {
@@ -287,6 +288,11 @@ public class DoctorPageController implements Initializable {
   }
 
   public void switchPortal() {
+
+    String portalSelection = (String) listUser.getSelectionModel().getSelectedItem();
+    Utlities.switchThePortal(listUser, portalSelection);
+
+    /*
     if (listUser.getSelectionModel().getSelectedItem() == "Admin Portal") {
       try {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -318,10 +324,22 @@ public class DoctorPageController implements Initializable {
         e.printStackTrace();
       }
     } else if (listUser.getSelectionModel().getSelectedItem() == "Patient Portal") {
+      try {
+        Parent root = FXMLLoader.load(getClass().getResource("PatientPage.fxml"));
+        Stage stage = new Stage();
 
+        stage.setTitle("Hospital Management System");
+        stage.setMinWidth(330);
+        stage.setMinHeight(550);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+
+      } catch(Exception e) {e.printStackTrace();}
     }
 
     listUser.getScene().getWindow().hide();
+    */
   }
 
   @FXML

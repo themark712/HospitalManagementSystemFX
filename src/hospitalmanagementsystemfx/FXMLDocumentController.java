@@ -20,6 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.text.Utilities;
+
 /**
  *
  * @author cni-mark
@@ -237,7 +239,10 @@ public class FXMLDocumentController implements Initializable {
     listUser.setItems(listData);
   }
 
-  public void switchPortal() {
+  public void switchPortal( ) {
+    String portalSelection = (String) listUser.getSelectionModel().getSelectedItem();
+    Utlities.switchThePortal(listUser, portalSelection);
+    /*
     if (listUser.getSelectionModel().getSelectedItem() == "Admin Portal") {
       try {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -265,10 +270,23 @@ public class FXMLDocumentController implements Initializable {
 
       } catch(Exception e) {e.printStackTrace();}
     } else if (listUser.getSelectionModel().getSelectedItem() == "Patient Portal") {
+      try {
+        Parent root = FXMLLoader.load(getClass().getResource("PatientPage.fxml"));
+        Stage stage = new Stage();
 
+        stage.setTitle("Hospital Management System");
+        stage.setMinWidth(330);
+        stage.setMinHeight(550);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root));
+        stage.show();
+
+      } catch(Exception e) {e.printStackTrace();}
     }
 
     listUser.getScene().getWindow().hide();
+
+     */
   }
 
   public void switchForm(ActionEvent event) {
