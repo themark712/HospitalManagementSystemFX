@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxWidth="550.0" prefHeight="330.0" stylesheets="@../design/page-design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementsystemfx.FXMLDocumentController">
+<StackPane maxHeight="550.0" maxWidth="330.0" prefHeight="550.0" prefWidth="330.0" stylesheets="@../design/page-design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementsystemfx.FXMLDocumentController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="formMain" prefHeight="550.0" prefWidth="330.0" styleClass="light-blue-bg" stylesheets="@../design/page-design.css">
           <children>

@@ -19,7 +19,7 @@ public class HospitalManagementSystemFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+
         Scene scene = new Scene(root);
         Image icon = new Image("hospital.png");
         stage.getIcons().add(icon);
@@ -27,7 +27,7 @@ public class HospitalManagementSystemFX extends Application {
         stage.setTitle("Hospital Management System");
         stage.setMinWidth(330);
         stage.setMinHeight(550);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setScene(scene);
         stage.show();
     }

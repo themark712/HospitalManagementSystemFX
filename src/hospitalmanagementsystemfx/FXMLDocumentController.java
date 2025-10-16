@@ -17,6 +17,7 @@ import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -127,6 +128,20 @@ public class FXMLDocumentController implements Initializable {
         if (result.next()) {
           // successful login
           alert.successMessage("Logged in successfully!");
+
+          // link main form for admin
+          Parent root = FXMLLoader.load(getClass().getResource("AdminMainForm.fxml"));
+          Stage stage = new Stage();
+
+          Image icon = new Image("hospital.png");
+          stage.getIcons().add(icon);
+          stage.setTitle("Hospital Management System | Admin Portal");
+          stage.setScene(new Scene(root));
+
+          stage.show();
+
+          // hide login form
+          buttonLogin.getScene().getWindow().hide();
         } else {
           // login failed
           alert.errorMessage("Incorrect username/password");
