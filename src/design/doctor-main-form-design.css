@@ -5,6 +5,7 @@
   -light-purple: #7a80cf;
   -gradient-from-color: #86c4fe;
   -gradient-to-color: #306090;
+  -gradient-from-color: #86c4fe;
   -gradient-table-from-color: #34a83b8;
   -gradient-table-to-color: #00395b;
   -gradient-side-from-color: #2990ce;
@@ -19,24 +20,25 @@
   -fx-background-color:#fff;
 }
 
+.light-blue-bg {
+  -fx-background-color:-light-blue;
+}
+
 .dark-blue-bg {
   -fx-background-color:-dark-blue;
-}
-
-.bg-color-1{
-    -fx-background-color: linear-gradient(to bottom right, -gradient-side-from-color, -gradient-side-to-color);
-}
-
-.bg-color-2{
-    -fx-background-color: linear-gradient(to bottom right, -gradient-side-from-color, -gradient-side-to-color);
 }
 
 .white-text {
   -fx-text-fill: #FFF;
 }
 
-.light-blue-bg {
-  -fx-background-color:-light-blue;
+.bg-color-1{
+    -fx-background-color: linear-gradient(to bottom right, -gradient-side-from-color, -gradient-side-to-color);
+}
+
+.border-top{
+    -fx-border-color: -dark-blue;
+    -fx-border-width: .5px 0 0.4px 0;
 }
 
 .radius {
@@ -47,60 +49,35 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
 }
 
-.border {
-    -fx-border-color: #000;
-    -fx-border-width: .5px;
-}
-
-.border-top{
-    -fx-border-color: -dark-blue;
-    -fx-border-width: .5px 0 0.4px 0;
-}
-
-.header-1 {
-  -fx-border-color: linear-gradient(to bottom right, -gradient-from-color, -gradient-to-color);
-  -fx-border-width: 0 0 0 2px;
-  -fx-padding: 0 0 0 5px;
-}
-
 .header-2 {
   -fx-border-color: linear-gradient(to bottom right, -gradient-from-color, -gradient-to-color);
   -fx-border-width: 0 0 0 2px;
   -fx-padding: 0 0 0 5px;
 }
 
-.btn-1 {
-  -fx-background-color: transparent;
-  -fx-border-color: #fff;
-  -fx-border-width: 0.4px;
-  -fx-text-fill: #fff;
-  -fx-font-family: "Segoe UI";
-  -fx-cursor: hand;
-  -fx-font-size: 13px;
+.bg-color-2 {
+  -fx-border-color: linear-gradient(to bottom right, -gradient-from-color, -gradient-to-color);
 }
 
-.btn-1:hover {
-  -fx-background-color: #fff;
-  -fx-border-color: -dark-blue;
-  -fx-text-fill: #000;
-  -fx-border-width: 1.4px;
-}
-
-.nav-btn-1{
-    -fx-background-color: transparent;
-    -fx-border-color: #fff;
-    -fx-border-width: .5px;
-    -fx-text-fill: #fff;
-    -fx-font-family: Arial;
+.btn-2{
+    -fx-background-color: linear-gradient(to bottom right, -gradient-from-color, -gradient-to-color);
     -fx-cursor: hand;
-    -fx-font-size: 13px;
-    -fx-alignment: CENTER_LEFT;
-    -fx-border-radius: 5px;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+}
+.btn-2:hover{
+    -fx-background-color: linear-gradient(to bottom right, -gradient-from-color, -gradient-to-color);
 }
 
-.nav-btn-1:hover{
-    -fx-background-color: #fff;
-    -fx-text-fill: #000;
+.textfield-2{
+    -fx-border-color: #000;
+    -fx-border-width: .3px;
+    -fx-font-family: Tahoma;
+}
+.textfield-2:focused{
+    -fx-border-color: linear-gradient(to bottom right, -gradient-from-color, -gradient-to-color);
+    -fx-border-width: 1px;
 }
 
 .nav-btn-2{
@@ -112,6 +89,7 @@
     -fx-cursor: hand;
     -fx-font-size: 13px;
     -fx-alignment: CENTER_LEFT;
+    -fx-border-radius: 5px;
 }
 
 .nav-btn-2:hover{
@@ -126,7 +104,7 @@
 }
 
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom right,#4a83b8,  #00395b);
+    -fx-background-color: linear-gradient(to bottom right, #4a83b8,  #00395b);
     -fx-background-insets: 0 0 0 0;
     -fx-background-radius: 8px 8px 0 0 ;
 }

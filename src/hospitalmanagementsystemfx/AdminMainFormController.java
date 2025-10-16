@@ -7,6 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -206,13 +209,16 @@ public class AdminMainFormController implements Initializable {
   private Label labelActivePatients;
 
   @FXML
-  private Label labelAdminEmail;
+  private Label labelProfileAdminId;
+
+  @FXML
+  private Label labelProfileAdminUsername;
+
+  @FXML
+  private Label labelProfileAdminEmail;
 
   @FXML
   private Label labelAdminId;
-
-  @FXML
-  private Label labelAdminUsername;
 
   @FXML
   private Label labelCurrentForm;
@@ -227,7 +233,7 @@ public class AdminMainFormController implements Initializable {
   private Label labelDoctor;
 
   @FXML
-  private Label labelHeaderUsername;
+  private Label labelAdminFullName;
 
   @FXML
   private Label labelPatientID;
@@ -245,10 +251,7 @@ public class AdminMainFormController implements Initializable {
   private Label labelTotalPatients;
 
   @FXML
-  private Label labelUsername;
-
-  @FXML
-  private Label lableAdminId;
+  private Label labelAdminUsername;
 
   @FXML
   private ComboBox<?> listGender;
@@ -273,6 +276,12 @@ public class AdminMainFormController implements Initializable {
 
   @FXML
   private TextField textAdminUsername;
+
+  private Connection connect;
+  private PreparedStatement prepare;
+  private ResultSet result;
+
+  private AlertMessage alert = new AlertMessage();
 
   @FXML
   public void switchForm(ActionEvent event) {
@@ -306,6 +315,23 @@ public class AdminMainFormController implements Initializable {
     formProfile.setVisible(false);
   }
 
+  public void displayAdminInfo() {
+    String sql = "SELECT * FROM Admin WHERE Username='" + Data.adminUsername + "'";
+
+    connect = Database.connectDB();
+
+    try{
+      prepare= connect.prepareStatement(sql);
+      result = prepare.executeQuery();
+
+      if(result.next()) {
+        labelAdminId.setText(result.getString("Id"));
+        labelAdminUsername.setText(result.getString("Username"));
+        labelAdminFullName.setText(result.getString("Fullname"));
+      }
+    } catch(Exception e) {e.printStackTrace();}
+  }
+
   public void runTime() {
     new Thread() {
       public void run() {
@@ -326,5 +352,6 @@ public class AdminMainFormController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     runTime();
+    displayAdminInfo();
   }
 }

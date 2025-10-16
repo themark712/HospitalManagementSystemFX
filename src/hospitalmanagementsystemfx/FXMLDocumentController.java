@@ -127,6 +127,8 @@ public class FXMLDocumentController implements Initializable {
 
         if (result.next()) {
           // successful login
+          Data.adminUsername = textLoginUsername.getText();
+
           alert.successMessage("Logged in successfully!");
 
           // link main form for admin
