@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="600.0" maxWidth="1100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementsystemfx.AdminMainFormController">
+<StackPane maxHeight="600.0" maxWidth="1100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hospitalmanagementsystemfx.DoctorMainFormController">
    <children>
       <AnchorPane fx:id="formMain" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -58,7 +58,7 @@
                               <Font name="Segoe UI Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelAdminFullName" layoutX="749.0" layoutY="11.0" prefHeight="17.0" prefWidth="138.0" text="Mark J" AnchorPane.rightAnchor="215.0">
+                        <Label fx:id="labelDoctorFullName" layoutX="749.0" layoutY="11.0" prefHeight="17.0" prefWidth="138.0" text="Mark J" AnchorPane.rightAnchor="215.0">
                            <font>
                               <Font name="Segoe UI Bold" size="14.0" />
                            </font>
@@ -94,22 +94,22 @@
                               <Image url="@../images/user.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="101.0" prefHeight="17.0" prefWidth="69.0" styleClass="white-text" text="Admin ID:">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="101.0" prefHeight="17.0" prefWidth="69.0" styleClass="white-text" text="Doctor ID:">
                            <font>
                               <Font name="Segoe UI" size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelAdminId" layoutX="84.0" layoutY="100.0" prefHeight="15.0" prefWidth="110.0" styleClass="white-text" text="1">
+                        <Label fx:id="labelDoctorId" layoutX="84.0" layoutY="100.0" prefHeight="15.0" prefWidth="110.0" styleClass="white-text" text="1">
                            <font>
                               <Font name="Segoe UI Black" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="123.0" prefHeight="17.0" prefWidth="69.0" styleClass="white-text" text="Username:">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="123.0" prefHeight="17.0" prefWidth="69.0" styleClass="white-text" text="Name:">
                            <font>
                               <Font name="Segoe UI" size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelAdminUsername" layoutX="84.0" layoutY="122.0" prefHeight="15.0" prefWidth="112.0" styleClass="white-text" text="markus73">
+                        <Label fx:id="labelDoctorUsername" layoutX="84.0" layoutY="122.0" prefHeight="15.0" prefWidth="112.0" styleClass="white-text" text="markus73">
                            <font>
                               <Font name="Segoe UI Black" size="14.0" />
                            </font>
@@ -490,7 +490,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TableView fx:id="tableAppointments" layoutX="13.0" layoutY="56.0" prefHeight="225.0" prefWidth="843.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="56.0">
+                                    <TableView fx:id="tableAppointments" layoutX="13.0" layoutY="56.0" onMouseClicked="#tableAppointmentSelect" prefHeight="225.0" prefWidth="843.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="56.0">
                                        <columns>
                                           <TableColumn fx:id="colAppointmentID" prefWidth="65.0" text="Appointment ID" />
                                           <TableColumn fx:id="colAppointmentName" prefWidth="110.0" text="Name" />
@@ -527,19 +527,21 @@
                                     <TextField fx:id="textAppointmentName" layoutX="125.0" layoutY="51.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
                                     <Label layoutX="74.0" layoutY="89.0" text="Gender:" />
                                     <ComboBox fx:id="comboAppointmentGender" layoutX="126.0" layoutY="86.0" prefHeight="25.0" prefWidth="180.0" promptText="Choose..." styleClass="textfield-2" />
-                                    <Label layoutX="341.0" layoutY="19.0" text="Description:" />
-                                    <TextField fx:id="textAppointmentDescription" layoutX="409.0" layoutY="15.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
-                                    <Label layoutX="345.0" layoutY="56.0" text="Diagnosis:" />
-                                    <TextField fx:id="textAppointmentDiagnosis" layoutX="409.0" layoutY="52.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
-                                    <Label layoutX="345.0" layoutY="91.0" text="Treatment:" />
-                                    <TextField fx:id="textAppointmentTreatment" layoutX="409.0" layoutY="87.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
                                     <Label layoutX="74.0" layoutY="125.0" text="Mobile #:" />
                                     <TextField fx:id="textAppointmentMobileNumber" layoutX="128.0" layoutY="121.0" prefHeight="25.0" prefWidth="166.0" styleClass="textfield-2" />
-                                    <Label layoutX="622.0" layoutY="25.0" text="Address:" />
-                                    <TextArea fx:id="textAppointmentAddress" layoutX="674.0" layoutY="25.0" prefHeight="40.0" prefWidth="167.0" styleClass="textfield-2" />
+                                    <Label layoutX="336.0" layoutY="18.0" text="Description:" />
+                                    <TextField fx:id="textAppointmentDescription" layoutX="404.0" layoutY="14.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
+                                    <Label layoutX="340.0" layoutY="55.0" text="Diagnosis:" />
+                                    <TextField fx:id="textAppointmentDiagnosis" layoutX="404.0" layoutY="51.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
+                                    <Label layoutX="340.0" layoutY="90.0" text="Treatment:" />
+                                    <TextField fx:id="textAppointmentTreatment" layoutX="404.0" layoutY="86.0" prefHeight="25.0" prefWidth="180.0" styleClass="textfield-2" />
+                                    <Label layoutX="622.0" layoutY="12.0" text="Address:" />
+                                    <TextArea fx:id="textAppointmentAddress" layoutX="674.0" layoutY="12.0" prefHeight="53.0" prefWidth="167.0" styleClass="textfield-2" />
                                     <Label layoutX="627.0" layoutY="84.0" text="Status:" />
                                     <ComboBox fx:id="comboAppointmentStatus" layoutX="674.0" layoutY="80.0" prefHeight="25.0" prefWidth="168.0" promptText="Choose..." styleClass="textfield-2" />
-                                    <Button fx:id="buttonAppointmentInsert" layoutX="167.0" layoutY="171.0" mnemonicParsing="false" onAction="#appointmentInsertBtn" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Insert">
+                                    <Label layoutX="612.0" layoutY="125.0" text="Schedule:" />
+                                    <DatePicker fx:id="dateAppointmentSchedule" layoutX="671.0" layoutY="121.0" />
+                                    <Button fx:id="buttonAppointmentInsert" layoutX="167.0" layoutY="171.0" mnemonicParsing="false" onAction="#buttonAppointmentInsertClick" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Insert">
                                        <graphic>
                                           <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -548,7 +550,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="buttonAppointmentUpdate" layoutX="286.0" layoutY="171.0" mnemonicParsing="false" onAction="#appointmentUpdateBtn" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Update">
+                                    <Button fx:id="buttonAppointmentUpdate" layoutX="286.0" layoutY="171.0" mnemonicParsing="false" onAction="#buttonAppointmentUpdateClick" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Update">
                                        <graphic>
                                           <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -557,7 +559,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="buttonAppointmentClear" layoutX="430.0" layoutY="171.0" mnemonicParsing="false" onAction="#appointmentClearBtn" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Clear">
+                                    <Button fx:id="buttonAppointmentClear" layoutX="430.0" layoutY="171.0" mnemonicParsing="false" onAction="#buttonAppointmentClearClick" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Clear">
                                        <graphic>
                                           <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -566,7 +568,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="buttonAppointmentDelete" layoutX="549.0" layoutY="171.0" mnemonicParsing="false" onAction="#appointmentDeleteBtn" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Delete">
+                                    <Button fx:id="buttonAppointmentDelete" layoutX="549.0" layoutY="171.0" mnemonicParsing="false" onAction="#buttonAppointmentDeleteClick" prefHeight="36.0" prefWidth="100.0" styleClass="btn-2" text="Delete">
                                        <graphic>
                                           <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -575,8 +577,6 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <DatePicker fx:id="dateAppointmentSchedule" layoutX="671.0" layoutY="121.0" />
-                                    <Label layoutX="612.0" layoutY="125.0" text="Schedule:" />
                                  </children>
                               </AnchorPane>
                            </children>

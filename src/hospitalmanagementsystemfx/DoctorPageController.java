@@ -141,8 +141,22 @@ public class DoctorPageController implements Initializable {
 
             //result = prepare.executeQuery();
 
+            Data.doctorName = result.getString("FullName");
+            Data.doctorId = result.getString("DoctorId");
+
             //if (result.next()) {
             alert.successMessage("Login successful!");
+
+            // link doctor main form
+            Parent root = FXMLLoader.load(getClass().getResource("DoctorMainForm.fxml"));
+            Stage stage = new Stage();
+
+            stage.setTitle("Hospital Management System | Doctor Page");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // hide login form
+            buttonLogin.getScene().getWindow().hide();
             //}
           }
         } else {
@@ -179,7 +193,7 @@ public class DoctorPageController implements Initializable {
       alert.errorMessage("Please fill all blank fields");
     } else {
 
-      String checkDoctorID = "SELECT * FROM doctor WHERE doctor_id = '"
+      String checkDoctorID = "SELECT * FROM doctor WHERE DoctorId = '"
               + textRegisterDoctorId.getText() + "'";
 
       connect = Database.connectDB();
@@ -206,7 +220,7 @@ public class DoctorPageController implements Initializable {
         } else {
           String fullName = textRegisterFirstName.getText() + " " + textRegisterLastName.getText();
           String insertData = "INSERT INTO doctor (FirstName, LastName, FullName, Email, DoctorId, Password, Date, Status) "
-                  + "VALUES(?,?,?,?,?,?)";
+                  + "VALUES(?,?,?,?,?,?,?,?)";
 
           prepare = connect.prepareStatement(insertData);
 
@@ -226,6 +240,11 @@ public class DoctorPageController implements Initializable {
 
           alert.successMessage("Registration successful!");
 
+          registerClear();
+
+          // after successful registration, switch to login form
+          formRegister.setVisible(false);
+          formLogin.setVisible(true);
         }
 
       } catch (Exception e) {
@@ -233,12 +252,18 @@ public class DoctorPageController implements Initializable {
       }
 
     }
+  }
 
+  public void registerClear() {
+    textRegisterEmail.clear();
+    textRegisterFirstName.clear();
+    textRegisterLastName.clear();
+    textRegisterPassword.clear();
+    textRegisterShowPassword.clear();
   }
 
   @FXML
   void registerShowPassword() {
-
     if (checkRegisterShowPassword.isSelected()) {
       textRegisterShowPassword.setText(textRegisterPassword.getText());
       textRegisterShowPassword.setVisible(true);
@@ -248,7 +273,6 @@ public class DoctorPageController implements Initializable {
       textRegisterShowPassword.setVisible(false);
       textRegisterPassword.setVisible(true);
     }
-
   }
 
   public void userList() {

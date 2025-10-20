@@ -335,7 +335,7 @@ public class AdminMainFormController implements Initializable {
   public void runTime() {
     new Thread() {
       public void run() {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyy hh:mm:ss a");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy hh:mm:ss a");
         while (true) {
           try {
             Thread.sleep(1000);
