@@ -222,7 +222,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="light-blue-bg" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="formDashboard" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="formDashboard" prefHeight="560.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="156.0" prefWidth="860.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
                                  <children>
@@ -437,7 +437,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="formPatients" prefHeight="560.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="formPatients" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="9.0" layoutY="12.0" prefHeight="537.0" prefWidth="868.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="12.0">
                                  <styleClass>
@@ -454,7 +454,8 @@
                                     <TableView fx:id="tablePatients" layoutX="13.0" layoutY="56.0" prefHeight="467.0" prefWidth="843.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="56.0">
                                        <columns>
                                           <TableColumn fx:id="colPatientID" prefWidth="75.0" text="Patient ID" />
-                                          <TableColumn fx:id="colPatientName" prefWidth="75.0" text="Name" />
+                                          <TableColumn fx:id="colPatientFirstName" prefWidth="75.0" text="First Name" />
+                                          <TableColumn fx:id="colPatientLastName" prefWidth="75.0" text="Last Name" />
                                           <TableColumn fx:id="colPatientGender" prefWidth="75.0" text="Gender" />
                                           <TableColumn fx:id="colPatientContactNumber" prefWidth="105.0" text="Contact Number" />
                                           <TableColumn fx:id="colPatientDescription" prefWidth="109.0" text="Description" />

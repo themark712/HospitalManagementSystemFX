@@ -372,7 +372,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="formPatients" prefHeight="560.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="formPatients" prefHeight="560.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="13.0" prefHeight="534.0" prefWidth="510.0" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="362.0" AnchorPane.topAnchor="13.0">
                                  <styleClass>
@@ -389,7 +389,8 @@
                                     <Label layoutX="25.0" layoutY="56.0" text="Patient ID:" />
                                     <TextField fx:id="textPatientId" layoutX="25.0" layoutY="73.0" prefHeight="25.0" prefWidth="439.0" promptText="Ex. 202300001" styleClass="textfield-2" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="73.0" />
                                     <Label layoutX="25.0" layoutY="112.0" text="Patient's Name:" />
-                                    <TextField fx:id="textPatientName" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="439.0" promptText="ex. Marco Man" styleClass="textfield-2" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="129.0" />
+                                    <TextField fx:id="textPatientFirstName" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="221.0" promptText="First Name" styleClass="textfield-2" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="129.0" />
+                                    <TextField fx:id="textPatientLastName" layoutX="259.0" layoutY="129.0" prefHeight="25.0" prefWidth="205.0" promptText="Last Name" styleClass="textfield-2" />
                                     <Label layoutX="26.0" layoutY="168.0" text="Gender:" />
                                     <ComboBox fx:id="comboPatientGender" layoutX="26.0" layoutY="185.0" prefHeight="25.0" prefWidth="355.0" promptText="Select your Gender" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="185.0" />
                                     <Label layoutX="25.0" layoutY="225.0" text="Mobile Number:" />
@@ -398,7 +399,7 @@
                                     <TextField fx:id="textPatientPassword" layoutX="25.0" layoutY="301.0" prefHeight="25.0" prefWidth="439.0" promptText="at least 8 characters needed" styleClass="textfield-2" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="301.0" />
                                     <Label layoutX="25.0" layoutY="340.0" text="Address:" />
                                     <TextArea fx:id="textPatientAddress" layoutX="25.0" layoutY="357.0" prefHeight="89.0" prefWidth="439.0" styleClass="textfield-2" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="357.0" />
-                                    <Button layoutX="98.0" layoutY="480.0" mnemonicParsing="false" onAction="#patientConfirmBtn" prefHeight="40.0" prefWidth="293.0" styleClass="btn-2" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="119.0">
+                                    <Button layoutX="98.0" layoutY="480.0" mnemonicParsing="false" onAction="#buttonPatientConfirmClick" prefHeight="40.0" prefWidth="293.0" styleClass="btn-2" text="Confirm" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="119.0">
                                        <graphic>
                                           <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -425,8 +426,8 @@
                                     <Label fx:id="labelPatientID" layoutX="102.0" layoutY="73.0" prefHeight="17.0" prefWidth="98.0" />
                                     <Label layoutX="39.0" layoutY="102.0" text="Password:" />
                                     <Label fx:id="labelPatientPassword" layoutX="102.0" layoutY="102.0" prefHeight="17.0" prefWidth="98.0" />
-                                    <Label layoutX="21.0" layoutY="138.0" text="Date Created:" />
-                                    <Label fx:id="labelPatientDateCreated" layoutX="102.0" layoutY="138.0" prefHeight="17.0" prefWidth="98.0" />
+                                    <Label layoutX="21.0" layoutY="132.0" text="Date Created:" />
+                                    <Label fx:id="labelPatientDateCreated" layoutX="102.0" layoutY="132.0" prefHeight="17.0" prefWidth="98.0" />
                                     <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="221.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/patient.png" />
@@ -481,7 +482,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="formAppointments" layoutX="9.0" layoutY="12.0" prefHeight="537.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="formAppointments" layoutX="9.0" layoutY="12.0" prefHeight="537.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="9.0" layoutY="-11.0" prefHeight="225.0" prefWidth="868.0" AnchorPane.bottomAnchor="251.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="14.0">
                                  <children>

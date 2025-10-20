@@ -155,7 +155,10 @@ public class AdminMainFormController implements Initializable {
   private TableColumn<?, ?> colPatientID;
 
   @FXML
-  private TableColumn<?, ?> colPatientName;
+  private TableColumn<?, ?> colPatientFirstName;
+
+  @FXML
+  private TableColumn<?, ?> colPatientLastName;
 
   @FXML
   private TableColumn<?, ?> colPatientStatus;

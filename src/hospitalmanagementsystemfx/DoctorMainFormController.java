@@ -118,7 +118,7 @@ public class DoctorMainFormController implements Initializable {
   private ComboBox<String> comboAppointmentStatus;
 
   @FXML
-  private ComboBox<?> comboPatientGender;
+  private ComboBox<String> comboPatientGender;
 
   @FXML
   private DatePicker dateAppointmentSchedule;
@@ -247,7 +247,10 @@ public class DoctorMainFormController implements Initializable {
   private TextField textPatientMobileNumber;
 
   @FXML
-  private TextField textPatientName;
+  private TextField textPatientFirstName;
+
+  @FXML
+  private TextField textPatientLastName;
 
   @FXML
   private TextField textPatientPassword;
@@ -256,7 +259,45 @@ public class DoctorMainFormController implements Initializable {
   private PreparedStatement prepare;
   private ResultSet result;
   private Statement statement;
-  private AlertMessage alert = new AlertMessage();
+  private final AlertMessage alert = new AlertMessage();
+
+  @FXML
+  public void buttonPatientConfirmClick() {
+    // check for blank fields
+    if (textPatientId.getText().isEmpty()
+            || textPatientFirstName.getText().isEmpty()
+            || textPatientLastName.getText().isEmpty()
+            || comboPatientGender.getSelectionModel().getSelectedItem() == null
+            || textPatientPassword.getText().isEmpty()
+            || textPatientAddress.getText().isEmpty()) {
+      alert.errorMessage("Please complete all fields");
+    } else {
+      Date date = new Date();
+      java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+      // display date to patient account section
+      labelPatientID.setText(textPatientId.getText());
+      labelPatientPassword.setText(textPatientPassword.getText());
+      labelPatientDateCreated.setText(String.valueOf(sqlDate));
+      // display data to patient information section
+      labelPatientName.setText(textPatientFirstName.getText() + " " + textPatientLastName.getText());
+      labelPatientGender.setText(comboPatientGender.getSelectionModel().getSelectedItem());
+      labelPatientMobileNumber.setText(textPatientMobileNumber.getText());
+      labelPatientAddress.setText(textPatientAddress.getText());
+    }
+  }
+
+  private void patientGenderList() {
+    List<String> listGender = new ArrayList<>();
+
+    for (String data : Data.gender) {
+      listGender.add(data);
+    }
+
+    ObservableList listData = FXCollections.observableList(listGender);
+
+    comboPatientGender.setItems(listData);
+  }
 
   public ObservableList<AppointmentData> appointmentGetData() {
     ObservableList<AppointmentData> listData = FXCollections.observableArrayList();
@@ -314,7 +355,7 @@ public class DoctorMainFormController implements Initializable {
   }
 
   @FXML
-  void buttonAppointmentInsertClick() {
+  public void buttonAppointmentInsertClick() {
     // check if the fields are empty
     if (textAppointmentID.getText().isEmpty()
             || textAppointmentName.getText().isEmpty()
@@ -385,7 +426,7 @@ public class DoctorMainFormController implements Initializable {
 
   // clear all fields
   @FXML
-  void buttonAppointmentClearClick() {
+  public void buttonAppointmentClearClick() {
     textAppointmentID.clear();
     textAppointmentName.clear();
     comboAppointmentGender.getSelectionModel().clearSelection();
@@ -400,7 +441,7 @@ public class DoctorMainFormController implements Initializable {
   }
 
   @FXML
-  void buttonAppointmentUpdateClick() {
+  public void buttonAppointmentUpdateClick() {
 
     // check if the fields are empty
     if (textAppointmentID.getText().isEmpty()
@@ -446,7 +487,7 @@ public class DoctorMainFormController implements Initializable {
   }
 
   @FXML
-  void buttonAppointmentDeleteClick() {
+  public void buttonAppointmentDeleteClick() {
     if (textAppointmentID.getText().isEmpty()) {
       alert.errorMessage("Please select an appointment to delete");
     } else {
@@ -475,7 +516,6 @@ public class DoctorMainFormController implements Initializable {
       }
     }
   }
-
 
   private int appointmentId;
 
@@ -522,11 +562,6 @@ public class DoctorMainFormController implements Initializable {
     textAppointmentAddress.setText("" + apptData.getAddress());
     comboAppointmentStatus.getSelectionModel().select(apptData.getStatus());
     //dateAppointmentSchedule.setValue(apptData.getSchedule());
-  }
-
-  @FXML
-  void patientConfirmBtn(ActionEvent event) {
-
   }
 
   public void appointmentGenderList() {
@@ -609,10 +644,14 @@ public class DoctorMainFormController implements Initializable {
     formDashboard.setVisible(true);
     displayDoctorInfo();
     runTime();
+
     // show appointment data when logging in
     appointmentShowData();
     appointmentGenderList();
     appointmentStatusList();
     showNextAppointmentId();
+
+    // show patient data when logging in
+    patientGenderList();
   }
 }
