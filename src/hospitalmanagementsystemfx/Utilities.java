@@ -6,12 +6,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-public class Utlities {
+public class Utilities {
 
   public static void switchThePortal(ComboBox<?> listUser, String listSelection) {
     if (listSelection == "Admin Portal") {
       try {
-        Parent root = FXMLLoader.load(Utlities.class.getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(Utilities.class.getResource("FXMLDocument.fxml"));
         Stage stage = new Stage();
 
         stage.setTitle("Hospital Management System");
@@ -24,7 +24,7 @@ public class Utlities {
       } catch(Exception e) {e.printStackTrace();}
     } else if (listSelection == "Doctor Portal") {
       try {
-        Parent root = FXMLLoader.load(Utlities.class.getResource("DoctorPage.fxml"));
+        Parent root = FXMLLoader.load(Utilities.class.getResource("DoctorPage.fxml"));
         Stage stage = new Stage();
 
         stage.setTitle("Hospital Management System");
@@ -37,7 +37,7 @@ public class Utlities {
       } catch(Exception e) {e.printStackTrace();}
     } else if (listSelection == "Patient Portal") {
       try {
-        Parent root = FXMLLoader.load(Utlities.class.getResource("PatientPage.fxml"));
+        Parent root = FXMLLoader.load(Utilities.class.getResource("PatientPage.fxml"));
         Stage stage = new Stage();
 
         stage.setTitle("Hospital Management System");

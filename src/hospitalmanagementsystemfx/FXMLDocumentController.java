@@ -21,8 +21,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.text.Utilities;
-
 /**
  *
  * @author cni-mark
@@ -258,7 +256,7 @@ public class FXMLDocumentController implements Initializable {
 
   public void switchPortal() {
     String portalSelection = (String) listUser.getSelectionModel().getSelectedItem();
-    Utlities.switchThePortal(listUser, portalSelection);
+    Utilities.switchThePortal(listUser, portalSelection);
   }
 
   public void switchForm(ActionEvent event) {

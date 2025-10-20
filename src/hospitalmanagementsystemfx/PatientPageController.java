@@ -142,7 +142,7 @@ public class PatientPageController implements Initializable {
   public void switchPortal() {
 
     String portalSelection = (String) listUser.getSelectionModel().getSelectedItem();
-    Utlities.switchThePortal(listUser, portalSelection);
+    Utilities.switchThePortal(listUser, portalSelection);
 
   }
 

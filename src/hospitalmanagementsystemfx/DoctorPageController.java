@@ -70,7 +70,10 @@ public class DoctorPageController implements Initializable {
   private TextField textLoginDoctorId;
 
   @FXML
-  private TextField textRegisterFullName;
+  private TextField textRegisterFirstName;
+
+  @FXML
+  private TextField textRegisterLastName;
 
   @FXML
   private TextField textRegisterEmail;
@@ -168,7 +171,8 @@ public class DoctorPageController implements Initializable {
   @FXML
   void registerAccount() {
 
-    if (textRegisterFullName.getText().isEmpty()
+    if (textRegisterFirstName.getText().isEmpty()
+            || textRegisterLastName.getText().isEmpty()
             || textRegisterEmail.getText().isEmpty()
             || textRegisterDoctorId.getText().isEmpty()
             || textRegisterPassword.getText().isEmpty()) {
@@ -200,8 +204,8 @@ public class DoctorPageController implements Initializable {
         } else if (textRegisterPassword.getText().length() < 8) {
           alert.errorMessage("Invalid password, at least 8 characters needed");
         } else {
-
-          String insertData = "INSERT INTO doctor (full_name, email, doctor_id, password, date, status) "
+          String fullName = textRegisterFirstName.getText() + " " + textRegisterLastName.getText();
+          String insertData = "INSERT INTO doctor (FirstName, LastName, FullName, Email, DoctorId, Password, Date, Status) "
                   + "VALUES(?,?,?,?,?,?)";
 
           prepare = connect.prepareStatement(insertData);
@@ -209,12 +213,14 @@ public class DoctorPageController implements Initializable {
           Date date = new Date();
           java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-          prepare.setString(1, textRegisterFullName.getText());
-          prepare.setString(2, textRegisterEmail.getText());
-          prepare.setString(3, textRegisterDoctorId.getText());
-          prepare.setString(4, textRegisterPassword.getText());
-          prepare.setString(5, String.valueOf(sqlDate));
-          prepare.setString(6, "Confirm");
+          prepare.setString(1, textRegisterFirstName.getText());
+          prepare.setString(2, textRegisterLastName.getText());
+          prepare.setString(3, fullName);
+          prepare.setString(4, textRegisterEmail.getText());
+          prepare.setString(5, textRegisterDoctorId.getText());
+          prepare.setString(6, textRegisterPassword.getText());
+          prepare.setString(7, String.valueOf(sqlDate));
+          prepare.setString(8, "Confirm");
 
           prepare.executeUpdate();
 
@@ -290,7 +296,7 @@ public class DoctorPageController implements Initializable {
   public void switchPortal() {
 
     String portalSelection = (String) listUser.getSelectionModel().getSelectedItem();
-    Utlities.switchThePortal(listUser, portalSelection);
+    Utilities.switchThePortal(listUser, portalSelection);
 
   }
 
